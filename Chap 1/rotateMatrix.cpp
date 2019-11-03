@@ -23,13 +23,39 @@ void rotateMatrix(int arr[][N],int N){
 		cout<<endl;
 	}
 
-	cout<<" Anti clockwise Rotation:"<<endl;
-	for(int i = N-1 ;i >= 0; --i){
+	cout<<" Rotation:"<<endl;
+	/*for(int i = N-1 ;i >= 0; --i){
 		for (int j = 0; j < N; j++)
 		{
 			cout<<arr[j][i];
 		}
 		cout<<endl;
+	}*/
+
+	//Pure rotation
+	for (int layer = 0; layer < N/2 ; ++layer){
+		int first = layer;
+		int last = N - 1 - layer;
+		for (int j = first; j < last; ++j)
+		{
+			int offset = j- first;
+			int top = arr[first][j]; //saving top
+			arr[first][j] = arr[last-offset][first];
+			arr[last-offset][first] = arr[last][last-offset];
+			arr[last][last-offset] = arr[j][last];
+			arr[j][last]=top;
+
+		}
+
 	}
+	for(int i = 0 ;i < N; i++){
+		for (int j = 0; j < N; ++j)
+		{
+			cout<<arr[i][j];
+		}
+		cout<<endl;
+	}
+
+
 
 }
