@@ -44,7 +44,6 @@ void rotateMatrix(int arr[][N],int N){
 			arr[last-offset][first] = arr[last][last-offset];
 			arr[last][last-offset] = arr[j][last];
 			arr[j][last]=top;
-
 		}
 
 	}
