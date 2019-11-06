@@ -13,10 +13,11 @@ struct node{
 
 class linkedlist{
 public:
-	void *insert(int val);
-	node *delete_node(int val);
+	void insert(int val);
+	void delete_node(node *head,int val);
 	node* returnList();
-	void display();
+	void display(node *head);
+	void remove_duplicates(node *head);
 	node *head;
 	linkedlist(){
 		head = nullptr;
