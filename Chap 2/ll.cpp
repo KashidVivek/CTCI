@@ -139,3 +139,36 @@ node* linkedlist :: sum_list(node *list1, node *list2){
 	node *new_list = l3.returnList();
 	return new_list;
 }
+
+
+bool linkedlist :: check_palindrome(node *head){
+	node *temp;
+	temp = head;
+	stack<int>s;
+	while(temp!=nullptr){
+		s.push(temp->val);
+		temp = temp->next;
+	}
+	node *temp2;
+	temp2 = head;
+	while(temp2 != nullptr){
+		int val = s.top();
+		s.pop();
+		if(temp2->val != val){
+			return false;
+		}
+		temp2 = temp2->next;
+	}
+	return true;
+}
+
+void linkedlist :: recursion_print(node *head){
+	node *temp = head;
+	if(temp == nullptr){
+		cout<<"null";
+	}
+	else{
+		cout<<temp->val<<" ";
+		recursion_print(temp->next);
+	}
+}

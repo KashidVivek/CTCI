@@ -21,6 +21,8 @@ public:
 	int kth_last(node *head, int k);
 	void delete_middle(node *head);
 	node *sum_list(node *list1,node *list2);
+	bool check_palindrome(node *head);
+	void recursion_print(node *head);
 	node *head;
 	linkedlist(){
 		head = nullptr;
