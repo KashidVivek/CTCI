@@ -1,5 +1,6 @@
 #ifndef ll
 #define ll
+
 struct node{
 	public:
 		int val;

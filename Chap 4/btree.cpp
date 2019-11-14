@@ -1,4 +1,6 @@
 #include <iostream>
+#include<vector>
+#include<queue>
 #include "tree.h"
 using namespace std;
 
@@ -33,4 +35,57 @@ void btree :: preorder(node *root){
 	cout<<root->val<<" ";
 	preorder(root->left);
 	preorder(root->right);
+}
+
+node *btree :: minimal_tree(node *root,vector<int> arr,int l, int r){
+	if( l > r){
+		return nullptr;
+	}
+	int mid = (l+r)/2;
+	root = newNode(arr[mid]);
+	root->left = minimal_tree(root,arr,l,mid - 1);
+	root->right = minimal_tree(root,arr,mid+1,r);
+	return root;
 } 
+
+node* btree :: newNode(int data)  
+{  
+    node* node1 = new node; 
+    node1->val = data;  
+    node1->left = NULL;  
+    node1->right = NULL;  
+  
+    return node1;  
+}
+
+int btree :: height(node *root){
+	if(root == nullptr) return 0;
+	int lheight = height(root->left);
+	int rheight = height(root->left);
+
+	return lheight>rheight ? lheight+1 : rheight + 1;  
+}
+
+void btree :: bfs(node *root){
+	queue<node *> q;
+	node *current;
+	if(root == nullptr) return;
+	q.push(root);
+	q.push(nullptr);
+	while(q.size() > 1){
+		current = q.front();
+		q.pop();
+
+		if(current == nullptr){
+			q.push(nullptr);
+			cout<<"\n";
+		}
+		else{
+			if(current->left)
+				q.push(current->left);
+			if(current->right)
+				q.push(current->right);
+			cout<<current->val;
+		}
+	}
+}
