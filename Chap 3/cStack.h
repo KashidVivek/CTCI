@@ -1,10 +1,14 @@
-#ifndef ll
-#define ll
+#ifndef cstack
+#define cstack
 
 class stack{
 public:
-	void push(int val);
+	int* a = nullptr;
+	a = new int[20];
+	void push(int val,int a[]);
 	void pop();
-	int top();
+	int top(int a[]);
+	void display(int a[]);
+	int top = 0;
 };
 #endif
