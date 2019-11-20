@@ -9,6 +9,11 @@ struct node{
 		node *left;
 };
 
+struct ll{
+	int val;
+	ll *next;
+}*head;
+
 class btree{
 public:
 	node *insert(node *root, int value);
@@ -18,7 +23,11 @@ public:
 	void preorder(node *root);
 	node *minimal_tree(node *root,std::vector<int> arr,int l,int r);
 	node *root;
+	ll *head;
 	node *newNode(int data);
+	ll* depth_list(node *root);
+	void insert_list(int val);
+	void display(ll* head);
 	int height(node *root);
 	void bfs(node *root);
 	btree(){

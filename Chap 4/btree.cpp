@@ -89,3 +89,60 @@ void btree :: bfs(node *root){
 		}
 	}
 }
+
+void btree :: insert_list(ll* head,int val){
+	node *temp,*new_node;
+	if(head == NULL){
+		temp = new node();
+		temp->val = val;
+		temp->next = nullptr;
+		head = temp;
+	}
+	else{
+		temp = head;
+		while(temp->next != NULL){
+			temp = temp->next;
+		}
+		new_node = new node;
+		new_node->val = val;
+		new_node->next = nullptr;
+		temp->next = new_node;
+	}
+} 
+
+ll* btree :: depth_list(node *root){
+	queue<node *> q;
+	node *current;
+	ll* head;
+	if(root == nullptr) return nullptr;
+	q.push(root);
+	q.push(nullptr);
+	while(q.size() > 1){
+		current = q.front();
+		q.pop();
+
+		if(current == nullptr){
+			q.push(nullptr);
+			//cout<<"\n";
+		}
+		else{
+			if(current->left)
+				q.push(current->left);
+			if(current->right)
+				q.push(current->right);
+			insert_list(head,current->val);
+		}
+	}
+	return head;
+}
+
+void btree :: display(ll *head){
+	node *temp;
+    temp=head;
+    while(temp!=NULL)
+    {
+      cout<<temp->val<<"->";
+      temp=temp->next;
+    }
+    cout<<"null";
+}
